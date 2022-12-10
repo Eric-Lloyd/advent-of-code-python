@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from typing import List
 
@@ -12,5 +12,5 @@ elves_calories = read_elves_calories()
 
 elf_calories_sums = sorted([sum(elf_calories) for elf_calories in elves_calories])
 
-print(elf_calories_sums[-1]) # part 1
-print(sum(elf_calories_sums[-3:])) # part 2
+print(elf_calories_sums[-1])  # part 1
+print(sum(elf_calories_sums[-3:]))  # part 2
