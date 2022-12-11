@@ -10,7 +10,7 @@ from typing import Callable, Dict, List
 class Monkey:
   id: int
   items: deque
-  operation: Callable
+  operation: Callable[[int], int]
   test: int
   actions: Dict[bool, int]
   inspect_count: int = 0
@@ -20,8 +20,7 @@ class Monkey:
     id = int(lines[0][-2])
     l = lines[1].split(":")[-1].replace(" ", "").split(",")
     items = deque(map(int, l))
-    operation_str = lines[2].split("= ")[-1]
-    operation = eval('lambda old: ' + operation_str) # leverage 'eval'
+    operation = eval('lambda old: ' + lines[2].split("= ")[-1])
     test = int(lines[3].split(" ")[-1])
     actions = {
       True: int(lines[4].split(" ")[-1]),
@@ -60,6 +59,7 @@ def monkey_business(monkey_data: List[str], n_rounds: int, relief: bool) -> None
   counts = (m.inspect_count for m in monkeys)
   first, second, *_ = sorted(counts, reverse=True)
   print(first * second)
+
 
 ### EXECUTION ###
 with open('input_data.txt', 'r') as input_data:
