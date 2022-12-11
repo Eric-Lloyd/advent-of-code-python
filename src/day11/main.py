@@ -43,7 +43,7 @@ class Monkey:
     return self.actions[divisible]
 
 
-def monkey_business(monkey_data: List[str], n_rounds: int, relief: bool) -> None:
+def monkey_business(monkey_data: List[List[str]], n_rounds: int, relief: bool) -> None:
   monkeys = [Monkey.parse(m) for m in monkey_data]
   magic_product = reduce(lambda a, b: a * b, (m.test for m in monkeys))
   for _ in range(n_rounds):
